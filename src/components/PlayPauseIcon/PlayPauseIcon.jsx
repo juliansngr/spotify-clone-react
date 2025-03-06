@@ -1,5 +1,3 @@
-import "./PlayPauseIcon.css";
-
 export default function PlayPauseIcon(playbackState) {
   if (playbackState === true) {
     return (
