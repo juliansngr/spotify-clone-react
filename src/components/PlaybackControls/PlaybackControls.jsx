@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ControlButton from "../ControlButton/ControlButton";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 
 import "./PlaybackControls.css";
 
@@ -12,6 +13,9 @@ import CurrentTrackDisplay from "../CurrentTrackDisplay/CurrentTrackDisplay";
 
 export default function PlaybackControls({ audioDB, currentTrack }) {
   const [playbackState, setPlaybackState] = useState(true);
+
+  // console.log(useAudioPlayer());
+  const { isPlaying, togglePlayPause } = useAudioPlayer();
 
   function handlePlayPause() {
     setPlaybackState(!playbackState);
@@ -31,8 +35,8 @@ export default function PlaybackControls({ audioDB, currentTrack }) {
           <div className="control-button__container">
             <ControlButton buttonImage={PrevIcon()} />
             <ControlButton
-              buttonImage={PlayPauseIcon(playbackState)}
-              onClick={handlePlayPause}
+              buttonImage={PlayPauseIcon(isPlaying)}
+              onClick={togglePlayPause}
             />
             <ControlButton buttonImage={NextIcon()} />
           </div>

@@ -1,0 +1,41 @@
+import { createContext, useContext, useRef, useState } from "react";
+import { audioDatabase } from "../AudioDatabase/AudioDatabase";
+
+const AudioPlayerContext = createContext();
+
+export function useAudioPlayer() {
+  return useContext(AudioPlayerContext);
+}
+
+export function AudioPlayerProvider({ children }) {
+  const [audioDB, setAudioDB] = useState(audioDatabase);
+  const audioRef = useRef(new Audio(audioDB[0].path));
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentSong, setCurrentSong] = useState(null);
+  const [progress, setProgress] = useState(0);
+
+  function togglePlayPause() {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  }
+
+  return (
+    <AudioPlayerContext.Provider
+      value={{
+        audioDB,
+        isPlaying,
+        togglePlayPause,
+        currentSong,
+        setCurrentSong,
+        progress,
+        setProgress,
+      }}
+    >
+      {children}
+    </AudioPlayerContext.Provider>
+  );
+}
