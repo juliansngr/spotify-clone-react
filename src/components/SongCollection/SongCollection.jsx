@@ -1,7 +1,11 @@
 import SingleSong from "../SingleSong/SingleSong";
 import "./SongCollection.css";
+import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 
-export default function SongCollection({ audioDB, handleTrackSelection }) {
+export default function SongCollection() {
+  const { audioDB, currentSong, setCurrentSong, handleTrackSelection } =
+    useAudioPlayer();
+
   return (
     <>
       <div className="song-collection-container">
@@ -12,7 +16,8 @@ export default function SongCollection({ audioDB, handleTrackSelection }) {
               songName={audio.name}
               artistName={audio.artist}
               onClick={() => {
-                handleTrackSelection(audio.id);
+                setCurrentSong(audio);
+                handleTrackSelection(audio.path);
               }}
               key={audio.id}
             />

@@ -11,11 +11,11 @@ import PrevIcon from "../PrevIcon/PrevIcon";
 import NextIcon from "../NextIcon/NextIcon";
 import CurrentTrackDisplay from "../CurrentTrackDisplay/CurrentTrackDisplay";
 
-export default function PlaybackControls({ audioDB, currentTrack }) {
+export default function PlaybackControls() {
   const [playbackState, setPlaybackState] = useState(true);
 
   // console.log(useAudioPlayer());
-  const { isPlaying, togglePlayPause } = useAudioPlayer();
+  const { audioDB, isPlaying, togglePlayPause, currentSong } = useAudioPlayer();
 
   function handlePlayPause() {
     setPlaybackState(!playbackState);
@@ -26,9 +26,9 @@ export default function PlaybackControls({ audioDB, currentTrack }) {
       <div className="playback-controls-container">
         <div className="current-track-container">
           <CurrentTrackDisplay
-            songName={currentTrack[0].name}
-            artistName={currentTrack[0].artist}
-            coverPath={currentTrack[0].cover}
+            songName={currentSong.name}
+            artistName={currentSong.artist}
+            coverPath={currentSong.cover}
           />
         </div>
         <div className="playback-middlesection-container">
@@ -44,8 +44,8 @@ export default function PlaybackControls({ audioDB, currentTrack }) {
         </div>
         <div className="current-track-container">
           <CurrentTrackDisplay
-            songName={currentTrack[0].name}
-            artistName={currentTrack[0].artist}
+            songName={currentSong.name}
+            artistName={currentSong.artist}
           />
         </div>
       </div>

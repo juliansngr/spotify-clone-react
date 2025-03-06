@@ -2,36 +2,33 @@ import "./App.css";
 
 // Temporary Imports
 import PlaybackControls from "./components/PlaybackControls/PlaybackControls";
-import { audioDatabase } from "../utils/AudioDatabase/AudioDatabase";
+import { useAudioPlayer } from "../utils/AudioPlayerContext/AudioPlayerContext";
 import { useRef, useState } from "react";
 import { AudioPlayerProvider } from "../utils/AudioPlayerContext/AudioPlayerContext";
 import SongCollection from "./components/SongCollection/SongCollection";
 
 function App() {
-  const [audioDB, setAudioDB] = useState(audioDatabase);
-  const [currentTrack, setCurrentTrack] = useState([audioDB[0]]);
+  // const { currentSong, setCurrentSong } = useAudioPlayer();
+  // const [currentTrack, setCurrentTrack] = useState([audioDB[0]]);
 
-  function handleTrackSelection(selectedTrackID) {
-    // console.log("handleTrackSelection initiated");
-    const newCurrentTrack = audioDB.filter((track) => {
-      if (selectedTrackID === track.id) {
-        return track;
-      }
-    });
+  // function handleTrackSelection(selectedTrackID) {
+  //   // console.log("handleTrackSelection initiated");
+  //   const newCurrentTrack = audioDB.filter((track) => {
+  //     if (selectedTrackID === track.id) {
+  //       return track;
+  //     }
+  //   });
 
-    setCurrentTrack(newCurrentTrack);
-  }
+  //   setCurrentTrack(newCurrentTrack);
+  // }
 
   // console.log("current track: ", currentTrack);
 
   return (
     <>
       <AudioPlayerProvider>
-        <PlaybackControls audioDB={audioDB} currentTrack={currentTrack} />
-        <SongCollection
-          audioDB={audioDB}
-          handleTrackSelection={handleTrackSelection}
-        />
+        <PlaybackControls />
+        <SongCollection />
       </AudioPlayerProvider>
     </>
   );

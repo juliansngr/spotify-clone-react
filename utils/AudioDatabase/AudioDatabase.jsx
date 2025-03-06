@@ -10,14 +10,14 @@ export const audioDatabase = [
     name: "Idea 5",
     artist: "Gibran Alcocer",
     cover: "./cover/idea5.jpg",
-    path: "./audio/idea9.mp3",
+    path: "./audio/idea5.mp3",
     id: crypto.randomUUID(),
   },
   {
     name: "Idea 9",
     artist: "Gibran Alcocer",
     cover: "./cover/idea9.jpg",
-    path: "./audio/idea5.mp3",
+    path: "./audio/idea9.mp3",
     id: crypto.randomUUID(),
   },
   {

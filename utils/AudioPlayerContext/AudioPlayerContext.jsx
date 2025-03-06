@@ -11,7 +11,7 @@ export function AudioPlayerProvider({ children }) {
   const [audioDB, setAudioDB] = useState(audioDatabase);
   const audioRef = useRef(new Audio(audioDB[0].path));
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentSong, setCurrentSong] = useState(null);
+  const [currentSong, setCurrentSong] = useState(audioDB[0]);
   const [progress, setProgress] = useState(0);
 
   function togglePlayPause() {
@@ -21,6 +21,16 @@ export function AudioPlayerProvider({ children }) {
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
+  }
+
+  function handleTrackSelection(newPath) {
+    console.log(newPath);
+    if (audioRef.current) {
+      audioRef.current.src = newPath;
+      audioRef.current.load();
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
   }
 
   return (
@@ -33,6 +43,7 @@ export function AudioPlayerProvider({ children }) {
         setCurrentSong,
         progress,
         setProgress,
+        handleTrackSelection,
       }}
     >
       {children}
