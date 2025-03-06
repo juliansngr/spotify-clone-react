@@ -1,5 +1,3 @@
-import "./NextIcon.css";
-
 export default function NextIcon() {
   return (
     <svg

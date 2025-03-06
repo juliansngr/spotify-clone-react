@@ -1,0 +1,17 @@
+.control-button {
+  border: none;
+  background-color: transparent;
+}
+
+.icon {
+  width: 50px;
+  cursor: pointer;
+}
+
+svg path {
+  fill: white;
+}
+
+/* svg path:hover {
+  fill: white;
+} */

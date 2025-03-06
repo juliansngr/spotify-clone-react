@@ -1,5 +1,3 @@
-import "./PrevIcon.css";
-
 export default function PrevIcon() {
   return (
     <svg
