@@ -8,8 +8,9 @@ import "./PlaybackControls.css";
 import PlayPauseIcon from "../PlayPauseIcon/PlayPauseIcon";
 import PrevIcon from "../PrevIcon/PrevIcon";
 import NextIcon from "../NextIcon/NextIcon";
+import CurrentTrackDisplay from "../CurrentTrackDisplay/CurrentTrackDisplay";
 
-export default function PlaybackControls() {
+export default function PlaybackControls({ audioDB, currentTrack }) {
   const [playbackState, setPlaybackState] = useState(true);
 
   function handlePlayPause() {
@@ -18,16 +19,31 @@ export default function PlaybackControls() {
 
   return (
     <>
-      <div class="playback-controls-cointainer">
-        <div className="control-button__container">
-          <ControlButton buttonImage={PrevIcon()} />
-          <ControlButton
-            buttonImage={PlayPauseIcon(playbackState)}
-            onClick={handlePlayPause}
+      <div className="playback-controls-container">
+        <div className="current-track-container">
+          <CurrentTrackDisplay
+            songName={currentTrack[0].name}
+            artistName={currentTrack[0].artist}
+            coverPath={currentTrack[0].cover}
           />
-          <ControlButton buttonImage={NextIcon()} />
         </div>
-        <ProgressBar />
+        <div className="playback-middlesection-container">
+          <div className="control-button__container">
+            <ControlButton buttonImage={PrevIcon()} />
+            <ControlButton
+              buttonImage={PlayPauseIcon(playbackState)}
+              onClick={handlePlayPause}
+            />
+            <ControlButton buttonImage={NextIcon()} />
+          </div>
+          <ProgressBar />
+        </div>
+        <div className="current-track-container">
+          <CurrentTrackDisplay
+            songName={currentTrack[0].name}
+            artistName={currentTrack[0].artist}
+          />
+        </div>
       </div>
     </>
   );
