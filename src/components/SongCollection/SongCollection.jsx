@@ -1,7 +1,7 @@
 import SingleSong from "../SingleSong/SingleSong";
 import "./SongCollection.css";
 
-export default function SongCollection({ audioDB }) {
+export default function SongCollection({ audioDB, handleTrackSelection }) {
   return (
     <>
       <div className="song-collection-container">
@@ -9,7 +9,11 @@ export default function SongCollection({ audioDB }) {
           return (
             <SingleSong
               coverPath={audio.cover}
-              songID={audio.id}
+              songName={audio.name}
+              artistName={audio.artist}
+              onClick={() => {
+                handleTrackSelection(audio.id);
+              }}
               key={audio.id}
             />
           );
