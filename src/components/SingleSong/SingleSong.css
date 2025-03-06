@@ -1,0 +1,9 @@
+.cover-image {
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+}
+
+.cover-image:hover {
+  transform: scale(1.05);
+}
