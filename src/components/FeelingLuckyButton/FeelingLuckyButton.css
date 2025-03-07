@@ -1,0 +1,16 @@
+.feeling-lucky-button {
+  font-size: 1.3rem;
+  font-weight: 100;
+  margin: 0;
+  padding: 15px 25px;
+  background-color: #ffffff;
+  color: #1e1e1e;
+  border-radius: 50px;
+  border: none;
+  transition: all 0.5s;
+}
+
+.feeling-lucky-button:hover {
+  background-color: #ffffff;
+  transform: scale(1.04);
+}
