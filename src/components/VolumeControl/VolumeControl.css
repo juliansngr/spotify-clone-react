@@ -1,0 +1,15 @@
+.volume-control {
+  width: 200px;
+  cursor: pointer;
+}
+
+.mute-button {
+  color: rgb(201, 201, 201);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.mute-button:hover {
+  color: white;
+}

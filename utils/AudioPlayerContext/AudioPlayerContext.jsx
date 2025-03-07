@@ -14,6 +14,8 @@ export function AudioPlayerProvider({ children }) {
   const [currentSong, setCurrentSong] = useState(audioDB[0]);
   const [progress, setProgress] = useState(0);
   const [songDuration, setSongDuration] = useState(0);
+  const [volume, setVolume] = useState(0.5);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     const currentAudio = audioRef.current;
@@ -32,6 +34,7 @@ export function AudioPlayerProvider({ children }) {
 
     return () => {
       currentAudio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      currentAudio.removeEventListener("timeupdate", handleCurrentTime);
     };
   }, []);
 
@@ -54,9 +57,32 @@ export function AudioPlayerProvider({ children }) {
     }
   }
 
-  // function getSongDuration() {
-  //   console.log(audioRef.duration);
-  // }
+  function handleVolumeChange(event) {
+    const newVolume = parseFloat(event.target.value);
+
+    setVolume(newVolume);
+
+    if (newVolume === 0) {
+      setIsMuted(true);
+    }
+
+    if (newVolume > 0) {
+      setIsMuted(false);
+    }
+
+    audioRef.current.volume = newVolume;
+  }
+
+  function handleMute(event) {
+    if (isMuted === false) {
+      audioRef.current.volume = 0;
+      setIsMuted(true);
+    }
+    if (isMuted === true) {
+      audioRef.current.volume = volume;
+      setIsMuted(false);
+    }
+  }
 
   return (
     <AudioPlayerContext.Provider
@@ -70,6 +96,11 @@ export function AudioPlayerProvider({ children }) {
         setProgress,
         handleTrackSelection,
         songDuration,
+        volume,
+        handleVolumeChange,
+        isMuted,
+        setIsMuted,
+        handleMute,
       }}
     >
       {children}

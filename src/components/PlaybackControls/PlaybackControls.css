@@ -18,6 +18,7 @@
 .current-track-container {
   display: flex;
   align-items: center;
+  padding-left: 15px;
 }
 
 .current-track-display__cover {
@@ -42,4 +43,9 @@
   font-size: 0.9rem;
   margin-top: 5px;
   margin-bottom: 0;
+}
+
+.volume-control-container {
+  display: flex;
+  padding-right: 30px;
 }

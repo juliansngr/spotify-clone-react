@@ -10,6 +10,7 @@ import PlayPauseIcon from "../PlayPauseIcon/PlayPauseIcon";
 import PrevIcon from "../PrevIcon/PrevIcon";
 import NextIcon from "../NextIcon/NextIcon";
 import CurrentTrackDisplay from "../CurrentTrackDisplay/CurrentTrackDisplay";
+import VolumeControl from "../VolumeControl/VolumeControl";
 
 export default function PlaybackControls() {
   const [playbackState, setPlaybackState] = useState(true);
@@ -42,11 +43,8 @@ export default function PlaybackControls() {
           </div>
           <ProgressBar />
         </div>
-        <div className="current-track-container">
-          <CurrentTrackDisplay
-            songName={currentSong.name}
-            artistName={currentSong.artist}
-          />
+        <div className="volume-control-container">
+          <VolumeControl />
         </div>
       </div>
     </>
