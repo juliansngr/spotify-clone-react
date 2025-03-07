@@ -12,26 +12,18 @@ export function AudioPlayerProvider({ children }) {
   const audioRef = useRef(new Audio(audioDB[0].path));
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState(audioDB[0]);
-  const [progress, setProgress] = useState("0:00");
-  const [songDuration, setSongDuration] = useState("0:00");
+  const [progress, setProgress] = useState(0);
+  const [songDuration, setSongDuration] = useState(0);
 
   useEffect(() => {
     const currentAudio = audioRef.current;
 
-    function formatTime(seconds) {
-      const minutes = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60);
-      return `${minutes}:${secs.toString().padStart(2, "0")}`;
-    }
-
     function handleLoadedMetadata() {
-      const songDuration = formatTime(currentAudio.duration);
-      setSongDuration(songDuration);
+      setSongDuration(currentAudio.duration);
     }
 
     function handleCurrentTime() {
-      const currentTime = formatTime(currentAudio.currentTime);
-      setProgress(currentTime);
+      setProgress(currentAudio.currentTime);
     }
 
     currentAudio.addEventListener("loadedmetadata", handleLoadedMetadata);
