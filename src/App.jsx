@@ -2,8 +2,6 @@ import "./App.css";
 
 // Temporary Imports
 import PlaybackControls from "./components/PlaybackControls/PlaybackControls";
-import { useAudioPlayer } from "../utils/AudioPlayerContext/AudioPlayerContext";
-import { useRef, useState } from "react";
 import { AudioPlayerProvider } from "../utils/AudioPlayerContext/AudioPlayerContext";
 import SongCollection from "./components/SongCollection/SongCollection";
 

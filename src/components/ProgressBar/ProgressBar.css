@@ -1,3 +1,12 @@
+.progress-bar-container {
+  display: flex;
+  gap: 15px;
+}
+
 .progress-bar {
   width: 800px;
 }
+
+/* .progress-bar__duration-text {
+  font-size: 0.3rem;
+} */
