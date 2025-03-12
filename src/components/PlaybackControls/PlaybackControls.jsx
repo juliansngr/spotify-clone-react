@@ -11,6 +11,7 @@ import PrevIcon from "../PrevIcon/PrevIcon";
 import NextIcon from "../NextIcon/NextIcon";
 import CurrentTrackDisplay from "../CurrentTrackDisplay/CurrentTrackDisplay";
 import VolumeControl from "../VolumeControl/VolumeControl";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 export default function PlaybackControls() {
   const [playbackState, setPlaybackState] = useState(true);
@@ -34,12 +35,24 @@ export default function PlaybackControls() {
         </div>
         <div className="playback-middlesection-container">
           <div className="control-button__container">
-            <ControlButton buttonImage={PrevIcon()} />
-            <ControlButton
-              buttonImage={PlayPauseIcon(isPlaying)}
-              onClick={togglePlayPause}
-            />
-            <ControlButton buttonImage={NextIcon()} />
+            <SignedOut>
+              <ControlButton buttonImage={PrevIcon()} disabled={true} />
+              <ControlButton
+                buttonImage={PlayPauseIcon(isPlaying)}
+                onClick={togglePlayPause}
+                disabled={true}
+              />
+              <ControlButton buttonImage={NextIcon()} disabled={true} />
+            </SignedOut>
+            <SignedIn>
+              <ControlButton buttonImage={PrevIcon()} disabled={false} />
+              <ControlButton
+                buttonImage={PlayPauseIcon(isPlaying)}
+                onClick={togglePlayPause}
+                disabled={false}
+              />
+              <ControlButton buttonImage={NextIcon()} disabled={false} />
+            </SignedIn>
           </div>
           <ProgressBar />
         </div>

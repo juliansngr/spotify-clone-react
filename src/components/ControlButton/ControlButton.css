@@ -12,6 +12,10 @@ svg path {
   fill: white;
 }
 
+.control-button-disabled svg path {
+  fill: gray;
+}
+
 /* svg path:hover {
   fill: white;
 } */
