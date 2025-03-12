@@ -4,6 +4,9 @@ import "./App.css";
 import PlaybackControls from "./components/PlaybackControls/PlaybackControls";
 import { AudioPlayerProvider } from "../utils/AudioPlayerContext/AudioPlayerContext";
 import SongCollection from "./components/SongCollection/SongCollection";
+import Header from "./components/Header/Header";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import EmptySongCollection from "./components/EmptySongCollection/EmptySongCollection";
 
 function App() {
   // const { currentSong, setCurrentSong } = useAudioPlayer();
@@ -24,9 +27,15 @@ function App() {
 
   return (
     <>
+      <Header />
       <AudioPlayerProvider>
         <PlaybackControls />
-        <SongCollection />
+        <SignedOut>
+          <EmptySongCollection />
+        </SignedOut>
+        <SignedIn>
+          <SongCollection />
+        </SignedIn>
       </AudioPlayerProvider>
     </>
   );
