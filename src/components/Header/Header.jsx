@@ -10,7 +10,7 @@ import "./Header.css";
 export default function Header() {
   return (
     <header className="header">
-      <img src="public/logo.png" className="logo" />
+      <img src="./assets/logo.png" className="logo" />
 
       <SignedOut>
         <SignInButton />
