@@ -1,8 +1,12 @@
+.main-content {
+  padding-top: 5vh;
+  padding-bottom: 15vh;
+}
+
 .song-collection-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: 25px;
 
   /* background: linear-gradient(
     0deg,

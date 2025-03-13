@@ -5,6 +5,7 @@ import { useAudioPlayer } from "../utils/AudioPlayerContext/AudioPlayerContext";
 import "./Track.css";
 import { useEffect, useState } from "react";
 import PlaybackControls from "./components/PlaybackControls/PlaybackControls";
+import NotFoundPage from "./NotFoundPage";
 
 export default function Track() {
   const { audioDB, setCurrentSong, handleTrackSelection } = useAudioPlayer();
@@ -13,6 +14,14 @@ export default function Track() {
 
   const selectedTrack = audioDB.find((track) => {
     return track.id === id;
+  });
+
+  if (!selectedTrack) {
+    return <NotFoundPage />;
+  }
+
+  useEffect(() => {
+    getAudioDuration(selectedTrack.path);
   });
 
   function getAudioDuration(filePath) {
@@ -33,10 +42,6 @@ export default function Track() {
       setDuration(durationString);
     });
   }
-
-  useEffect(() => {
-    getAudioDuration(selectedTrack.path);
-  });
 
   return (
     <>

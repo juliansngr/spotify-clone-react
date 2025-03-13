@@ -19,9 +19,10 @@ if (!PUBLISHABLE_KEY) {
 // React Router Setup
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
-  { path: "/track", element: <Track /> },
+  // { path: "/track", element: <Track /> },
   { path: "/track/:id", element: <Track /> },
   { path: "*", element: <NotFoundPage /> },
+  { path: "/track/*", element: <NotFoundPage /> },
 ]);
 
 createRoot(document.getElementById("root")).render(

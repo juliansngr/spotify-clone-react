@@ -8,7 +8,7 @@ export default function SingleSong({
   onClick,
 }) {
   return (
-    <div className="single-song__container" onClick={onClick}>
+    <div className="single-song__container">
       <img className="cover-image" src={coverPath}></img>
       <p className="single-song__title">{songName}</p>
       <p className="single-song__subtext">{artistName}</p>
