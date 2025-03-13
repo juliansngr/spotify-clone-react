@@ -84,6 +84,11 @@ export function AudioPlayerProvider({ children }) {
     }
   }
 
+  function handleProgressBar(event) {
+    audioRef.current.currentTime = event.target.value;
+    setProgress(event.target.value);
+  }
+
   return (
     <AudioPlayerContext.Provider
       value={{
@@ -101,6 +106,7 @@ export function AudioPlayerProvider({ children }) {
         isMuted,
         setIsMuted,
         handleMute,
+        handleProgressBar,
       }}
     >
       {children}

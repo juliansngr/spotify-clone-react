@@ -3,7 +3,7 @@ import "./ProgressBar.css";
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 
 export default function ProgressBar() {
-  const { progress, songDuration } = useAudioPlayer();
+  const { progress, songDuration, handleProgressBar } = useAudioPlayer();
 
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -19,6 +19,7 @@ export default function ProgressBar() {
         className="progress-bar"
         max={songDuration}
         value={progress}
+        onChange={handleProgressBar}
       />
       <p className="progress-bar__duration-text">{formatTime(songDuration)}</p>
     </div>
