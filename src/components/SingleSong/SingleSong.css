@@ -69,3 +69,8 @@ a {
 .cover-image-wrapper {
   position: relative;
 }
+
+.text-wrap {
+  text-wrap: wrap;
+  word-wrap: break-word;
+}

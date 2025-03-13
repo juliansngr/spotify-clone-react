@@ -10,3 +10,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.main-content {
+  padding-top: 5vh;
+  padding-bottom: 15vh;
+}

@@ -30,12 +30,15 @@ function App() {
       <Header />
 
       <PlaybackControls />
-      <SignedOut>
-        <EmptySongCollection />
-      </SignedOut>
-      <SignedIn>
-        <SongCollection />
-      </SignedIn>
+
+      <main className="main-content">
+        <SignedOut>
+          <EmptySongCollection />
+        </SignedOut>
+        <SignedIn>
+          <SongCollection />
+        </SignedIn>
+      </main>
     </>
   );
 }

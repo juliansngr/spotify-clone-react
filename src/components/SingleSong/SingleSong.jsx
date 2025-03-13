@@ -27,7 +27,7 @@ export function SingleSongRandom({
   return (
     <a href={uri || link}>
       <div
-        className="single-song__container single-song__container--has-play"
+        className="single-song__container single-song__container--has-play text-wrap"
         onClick={onClick}
       >
         <div className="cover-image-wrapper">

@@ -7,6 +7,6 @@
   width: 800px;
 }
 
-/* .progress-bar__duration-text {
-  font-size: 0.3rem;
-} */
+.progress-bar__duration-text {
+  margin: 0;
+}
