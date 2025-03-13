@@ -8,7 +8,7 @@ export default function SingleSong({
   onClick,
 }) {
   return (
-    <div className="single-song__container" onClick={onClick}>
+    <div className="single-song__container">
       <img className="cover-image" src={coverPath}></img>
       <p className="single-song__title">{songName}</p>
       <p className="single-song__subtext">{artistName}</p>
@@ -27,7 +27,7 @@ export function SingleSongRandom({
   return (
     <a href={uri || link}>
       <div
-        className="single-song__container single-song__container--has-play"
+        className="single-song__container single-song__container--has-play text-wrap"
         onClick={onClick}
       >
         <div className="cover-image-wrapper">

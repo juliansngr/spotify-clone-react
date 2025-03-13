@@ -8,9 +8,9 @@ export default function VolumeControl() {
     <>
       <button className="mute-button" onClick={handleMute} value={0}>
         {isMuted ? (
-          <i class="material-icons">volume_off</i>
+          <i class="material-symbols-outlined">volume_off</i>
         ) : (
-          <i class="material-icons">volume_up</i>
+          <i class="material-symbols-outlined">volume_up</i>
         )}
       </button>
 

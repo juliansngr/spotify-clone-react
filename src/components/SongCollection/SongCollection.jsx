@@ -1,33 +1,29 @@
 import SingleSong from "../SingleSong/SingleSong";
 import { SingleSongRandom } from "../SingleSong/SingleSong";
 import "./SongCollection.css";
+import "../SingleSong/SingleSong.css";
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 import FeelingLuckyButton from "../FeelingLuckyButton/FeelingLuckyButton";
 import { useState } from "react";
 import { trackIdDatabase } from "../../../utils/trackIdDatabase/trackIdDatabase";
 import Tooltip from "../Tooltip/Tooltip";
+import { Link } from "react-router-dom";
+import PlayPauseIcon from "../PlayPauseIcon/PlayPauseIcon";
+import ControlButton from "../ControlButton/ControlButton";
 
 export default function SongCollection() {
-  const { audioDB, currentSong, setCurrentSong, handleTrackSelection } =
-    useAudioPlayer();
+  const {
+    audioDB,
+    isPlaying,
+    setCurrentSong,
+    currentSong,
+    handleTrackSelection,
+    togglePlayPause,
+  } = useAudioPlayer();
 
   const [randomTrackState, setRandomTrackState] = useState([]);
 
-  // const randomSongID = "2WYs5LxOZfEyURXu7V0O1a";
   function generateRandomSongID() {
-    //Base62 Kodierung -> Leider zu ungenau, deshalb switch auf eigene Datenbank
-    // const charSet =
-    //   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    // let randomSongID = "";
-    // for (let i = 0; i < 22; i++) {
-    //   randomSongID += charSet.charAt(
-    //     Math.floor(Math.random() * charSet.length)
-    //   );
-    // }
-    // console.log(randomSongID);
-    // return randomSongID;
-    //------------------------------
-
     function getRandomIdNumber() {
       return Math.floor(Math.random() * 114001);
     }
@@ -100,16 +96,41 @@ export default function SongCollection() {
       <div className="song-collection-container">
         {audioDB.map((audio) => {
           return (
-            <SingleSong
-              coverPath={audio.cover}
-              songName={audio.name}
-              artistName={audio.artist}
-              onClick={() => {
-                setCurrentSong(audio);
-                handleTrackSelection(audio.path);
-              }}
-              key={audio.id}
-            />
+            <div class="single-song__card-wrapper">
+              <ControlButton
+                className="single-song__play-button"
+                buttonImage={PlayPauseIcon(isPlaying && audio === currentSong)}
+                onClick={() => {
+                  if (audio === currentSong) {
+                    togglePlayPause();
+                  } else {
+                    setCurrentSong(audio);
+                    handleTrackSelection(audio.path);
+                  }
+                }}
+              />
+              {/* <button
+                className="single-song__play-button"
+                onClick={() => {
+                  setCurrentSong(audio);
+                  handleTrackSelection(audio.path);
+                }}
+              >
+                <PlayPauseIcon />
+              </button> */}
+              <Link to={`/track/${audio.id}`}>
+                <SingleSong
+                  coverPath={audio.cover}
+                  songName={audio.name}
+                  artistName={audio.artist}
+                  // onClick={() => {
+                  //   setCurrentSong(audio);
+                  //   handleTrackSelection(audio.path);
+                  // }}
+                  key={audio.id}
+                />
+              </Link>
+            </div>
           );
         })}
       </div>

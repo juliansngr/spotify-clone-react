@@ -2,7 +2,7 @@ import "./App.css";
 
 // Temporary Imports
 import PlaybackControls from "./components/PlaybackControls/PlaybackControls";
-import { AudioPlayerProvider } from "../utils/AudioPlayerContext/AudioPlayerContext";
+
 import SongCollection from "./components/SongCollection/SongCollection";
 import Header from "./components/Header/Header";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
@@ -28,15 +28,17 @@ function App() {
   return (
     <>
       <Header />
-      <AudioPlayerProvider>
-        <PlaybackControls />
+
+      <PlaybackControls />
+
+      <main className="main-content">
         <SignedOut>
           <EmptySongCollection />
         </SignedOut>
         <SignedIn>
           <SongCollection />
         </SignedIn>
-      </AudioPlayerProvider>
+      </main>
     </>
   );
 }
