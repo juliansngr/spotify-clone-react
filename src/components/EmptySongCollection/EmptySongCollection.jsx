@@ -4,7 +4,12 @@ export default function EmptySongCollection() {
   return (
     <>
       <div className="esc-container">
-        Please login, to access songs and playlists.
+        <h2>Please login, to access songs and playlists.</h2>
+        <div>
+          <h3>Test-Account:</h3>
+          <p>E-Mail: john@johndoe.de</p>
+          <p>Password: john@johndoe.de</p>
+        </div>
       </div>
     </>
   );
