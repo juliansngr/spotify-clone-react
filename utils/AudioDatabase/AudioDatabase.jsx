@@ -2,7 +2,7 @@ export const audioDatabase = [
   {
     name: "Idea 1",
     artist: "Gibran Alcocer",
-    cover: "../cover/idea1.jpg",
+    cover: "../cover/idea1.webp",
     path: "../audio/idea1.mp3",
     year: "2022",
     id: crypto.randomUUID(),
@@ -10,7 +10,7 @@ export const audioDatabase = [
   {
     name: "Idea 5",
     artist: "Gibran Alcocer",
-    cover: "../cover/idea5.jpg",
+    cover: "../cover/idea5.webp",
     path: "../audio/idea5.mp3",
     year: "2024",
     id: crypto.randomUUID(),
@@ -18,7 +18,7 @@ export const audioDatabase = [
   {
     name: "Idea 9",
     artist: "Gibran Alcocer",
-    cover: "../cover/idea9.jpg",
+    cover: "../cover/idea9.webp",
     path: "../audio/idea9.mp3",
     year: "2023",
     id: crypto.randomUUID(),
@@ -26,7 +26,7 @@ export const audioDatabase = [
   {
     name: "Idea 10",
     artist: "Gibran Alcocer",
-    cover: "../cover/idea10.jpg",
+    cover: "../cover/idea10.webp",
     path: "../audio/idea10.mp3",
     year: "2022",
     id: crypto.randomUUID(),
@@ -34,7 +34,7 @@ export const audioDatabase = [
   {
     name: "Idea 15",
     artist: "Gibran Alcocer",
-    cover: "../cover/idea15.jpg",
+    cover: "../cover/idea15.webp",
     path: "../audio/idea15.mp3",
     year: "2023",
     id: crypto.randomUUID(),
@@ -42,7 +42,7 @@ export const audioDatabase = [
   {
     name: "Idea 22",
     artist: "Gibran Alcocer",
-    cover: "../cover/idea22.jpg",
+    cover: "../cover/idea22.webp",
     path: "../audio/idea22.mp3",
     year: "2022",
     id: crypto.randomUUID(),

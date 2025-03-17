@@ -1,5 +1,3 @@
-import "./SingleSong.css";
-
 export default function SingleSong({
   coverPath,
   songName,
@@ -9,11 +7,11 @@ export default function SingleSong({
   return (
     <div className="relative flex flex-col items-start h-auto p-2 xl:p-6 rounded-2xl cursor-pointer transition-all duration-500 hover:bg-neutral-800">
       <img
-        className="max-w-40 sm:max-w-48 md:max-w-66 lg:max-w-78 xl:max-w-84 rounded-md"
+        className="max-w-40 mb-3 sm:max-w-48 md:max-w-66 lg:max-w-78 xl:max-w-84 rounded-md"
         src={coverPath}
       ></img>
-      <p className="single-song__title">{songName}</p>
-      <p className="single-song__subtext">{artistName}</p>
+      <p className="text-xl/5 mb-1">{songName}</p>
+      <p className="text-sm text-[#ababab]">{artistName}</p>
     </div>
   );
 }
@@ -29,17 +27,22 @@ export function SingleSongRandom({
   return (
     <a href={uri || link}>
       <div
-        className="single-song__container single-song__container--has-play text-wrap"
+        className="relative flex flex-col items-start h-auto p-2 xl:p-6 rounded-2xl cursor-pointer transition-all duration-500 hover:bg-neutral-800 hover:scale-103"
         onClick={onClick}
       >
-        <div className="cover-image-wrapper">
-          <img className="cover-image" src={coverPath}></img>
+        <div id="cover-image-wrapper">
+          <img
+            className="max-w-54 mb-3  md:max-w-66 lg:max-w-78 xl:max-w-84 rounded-md"
+            src={coverPath}
+          ></img>
           {/* <div className="single-song__play-icon">
           <PlayPauseIcon />
         </div> */}
         </div>
-        <p className="single-song__title">{songName}</p>
-        <p className="single-song__subtext">{artistName}</p>
+        <p className="text-xl text-left mb-1 max-w-40 sm:max-w-48 md:max-w-66 lg:max-w-78 xl:max-w-84">
+          {songName}
+        </p>
+        <p className="text-sm text-[#ababab]">{artistName}</p>
       </div>
     </a>
   );
