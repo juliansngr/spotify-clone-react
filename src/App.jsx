@@ -1,5 +1,3 @@
-import "./App.css";
-
 // Temporary Imports
 import PlaybackControls from "./components/PlaybackControls/PlaybackControls";
 
