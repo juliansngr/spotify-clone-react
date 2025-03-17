@@ -23,7 +23,7 @@ export default function PlaybackControls() {
 
   return (
     <>
-      <div className="flex justify-between items-center flex-col lg:flex-row bg-black py-5 fixed bottom-0 w-full z-50">
+      <div className="flex justify-between items-center flex-col gap-5 lg:flex-row bg-gradient-to-t from-black to-neutral-800/90 lg:bg-black lg:bg-none py-5 fixed bottom-0 w-full z-50 [clip-path:ellipse(100%_60%_at_50%_60%)] lg:[clip-path:none]">
         <div className="flex items-center pl-4">
           <CurrentTrackDisplay
             songName={currentSong.name}
@@ -31,7 +31,7 @@ export default function PlaybackControls() {
             coverPath={currentSong.cover}
           />
         </div>
-        <div className="flex flex-col-reverse lg:flex-col justify-center max-w-[900px]">
+        <div className="flex flex-col-reverse gap-2 lg:flex-col justify-center max-w-[900px]">
           <div className="control-button__container">
             <SignedOut>
               <ControlButton buttonImage={PrevIcon()} disabled={true} />
@@ -52,7 +52,12 @@ export default function PlaybackControls() {
               <ControlButton buttonImage={NextIcon()} disabled={false} />
             </SignedIn>
           </div>
-          <ProgressBar />
+          <SignedOut>
+            <ProgressBar disabled={true} />
+          </SignedOut>
+          <SignedIn>
+            <ProgressBar disabled={false} />
+          </SignedIn>
         </div>
         <div className="hidden lg:block">
           <VolumeControl />

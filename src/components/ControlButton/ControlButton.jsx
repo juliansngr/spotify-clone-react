@@ -1,4 +1,4 @@
-import "./ControlButton.css";
+// import "./ControlButton.css";
 
 export default function ControlButton({
   buttonImage,
@@ -8,9 +8,9 @@ export default function ControlButton({
 }) {
   return (
     <button
-      className={`control-button ${
-        disabled ? "control-button-disabled" : null
-      } ${extraClass}`}
+      className={`w-14 border-none bg-transparent ${
+        disabled ? "text-neutral-500 cursor-not-allowed" : "text-white"
+      }  ${extraClass ? extraClass : null}`}
       onClick={onClick}
       disabled={disabled ? true : false}
     >
@@ -18,3 +18,7 @@ export default function ControlButton({
     </button>
   );
 }
+
+// ${
+//   disabled ? "control-button-disabled" : null
+// }
