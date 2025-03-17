@@ -17,7 +17,13 @@ export default function Header() {
       </SignedOut>
       <SignedIn>
         <div className="flex content-center">
-          <UserButton className="scale-110" />
+          <UserButton
+            appearance={{
+              elements: {
+                userButtonAvatarBox: "!size-12",
+              },
+            }}
+          />
         </div>
       </SignedIn>
     </header>

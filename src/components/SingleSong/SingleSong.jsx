@@ -1,5 +1,4 @@
 import "./SingleSong.css";
-import PlayPauseIcon from "../PlayPauseIcon/PlayPauseIcon";
 
 export default function SingleSong({
   coverPath,
@@ -8,8 +7,11 @@ export default function SingleSong({
   onClick,
 }) {
   return (
-    <div className="single-song__container">
-      <img className="cover-image" src={coverPath}></img>
+    <div className="relative flex flex-col items-start h-auto p-2 xl:p-6 rounded-2xl cursor-pointer transition-all duration-500 hover:bg-neutral-800">
+      <img
+        className="max-w-40 sm:max-w-48 md:max-w-66 lg:max-w-78 xl:max-w-84 rounded-md"
+        src={coverPath}
+      ></img>
       <p className="single-song__title">{songName}</p>
       <p className="single-song__subtext">{artistName}</p>
     </div>
