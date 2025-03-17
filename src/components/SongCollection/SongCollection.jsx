@@ -5,7 +5,7 @@ import "../SingleSong/SingleSong.css";
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 
 import { useState } from "react";
-import { trackIdDatabase } from "../../../utils/trackIdDatabase/trackIdDatabase";
+
 import Tooltip from "../Tooltip/Tooltip";
 import { Link } from "react-router-dom";
 import PlayPauseIcon from "../PlayPauseIcon/PlayPauseIcon";
@@ -24,17 +24,25 @@ export default function SongCollection() {
 
   const [randomTrackState, setRandomTrackState] = useState([]);
 
-  function generateRandomSongID() {
-    function getRandomIdNumber() {
-      return Math.floor(Math.random() * 114001);
-    }
+  async function generateRandomSongID() {
+    try {
+      const response = await fetch("/data.json");
+      const trackIdDatabase = await response.json();
 
-    const randomSongID = trackIdDatabase[getRandomIdNumber()].track_id;
-    return randomSongID;
+      function getRandomIdNumber() {
+        return Math.floor(Math.random() * trackIdDatabase.length);
+      }
+      const randomTrackID = trackIdDatabase[getRandomIdNumber()].track_id;
+      console.log(randomTrackID);
+      return randomTrackID;
+    } catch (error) {
+      console.error("Fehler beim Laden der Track-Daten:", error);
+      return null;
+    }
   }
 
-  const clientId = "300d4a7b3e434a679584ae6117d6aaf7";
-  const clientSecret = "53f0ae113112461e91dae9c11d7137f5";
+  const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+  const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
 
   const body = "grant_type=client_credentials";
 
@@ -55,7 +63,7 @@ export default function SongCollection() {
       if (!response.ok) {
         throw new Error(`Fetch Error! ${response.headers}`);
       }
-      // console.log(data.access_token);
+
       return data.access_token;
     } catch (error) {
       console.log(error);
@@ -141,7 +149,7 @@ export default function SongCollection() {
             buttonText="Feelin' lucky today?"
             onClick={async () => {
               const access_token = await getSpotifyToken();
-              const randomID = generateRandomSongID();
+              const randomID = await generateRandomSongID();
               const randomTrack = await fetchRandomTrack(
                 randomID,
                 access_token
