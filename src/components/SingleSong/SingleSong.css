@@ -54,7 +54,7 @@ a {
   transform: scale(1.5) translateX(-50%) translateY(-120%);
   right: 0;
   bottom: 0;
-  z-index: 99;
+  z-index: 10;
   background-color: transparent;
   border: none;
   transition: all 0.3s;
