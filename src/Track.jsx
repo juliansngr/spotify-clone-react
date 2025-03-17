@@ -2,12 +2,12 @@ import Header from "./components/Header/Header";
 import { Link, useParams } from "react-router-dom";
 import { useAudioPlayer } from "../utils/AudioPlayerContext/AudioPlayerContext";
 
-import "./Track.css";
 import { useEffect, useState } from "react";
 import PlaybackControls from "./components/PlaybackControls/PlaybackControls";
 import NotFoundPage from "./NotFoundPage";
 import ControlButton from "./components/ControlButton/ControlButton";
 import PlayPauseIcon from "./components/PlayPauseIcon/PlayPauseIcon";
+import GeneralButton from "./components/GeneralButton/GeneralButton";
 
 export default function Track() {
   const {
@@ -55,71 +55,72 @@ export default function Track() {
   return (
     <>
       <Header />
-      <main className="main-content">
-        <div className="track__content-section">
-          <div className="track__content-wrapper">
-            <div className="track__header-section">
-              <img src={selectedTrack.cover} className="track__cover-image" />
-              <span className="track__text-container">
-                <p>Single</p>
-                <h1 className="track__name-heading">{selectedTrack.name}</h1>
-                <h3 className="track__artist-heading">
-                  {selectedTrack.artist} - {selectedTrack.year}
-                </h3>
-              </span>
-            </div>
-            <div className="track__playback-controls">
-              <ControlButton
-                className="track__play-button"
-                buttonImage={PlayPauseIcon(
-                  isPlaying && selectedTrack === currentSong
-                )}
-                onClick={() => {
-                  if (selectedTrack === currentSong) {
-                    togglePlayPause();
-                  } else {
-                    setCurrentSong(selectedTrack);
-                    handleTrackSelection(selectedTrack.path);
-                  }
-                }}
-              />
-            </div>
-            <div>
-              <div className="track__table-header">
-                <span className="track__font-grey">#</span>
-                <span className="track__font-grey">Track</span>
-                <span className="track__font-grey">Dauer</span>
-              </div>
-              <hr />
-              <div
-                className="track__list"
-                onClick={() => {
+      <main className="pt-[6vh] pb-[40vh] sm:pb-[30vh] md:pb-[40vh] lg:pb-[20vh] flex flex-col items-center gap-12">
+        <div className="flex flex-col gap-12 m-auto w-[70vw]">
+          <div className="flex flex-col md:flex-row gap-2 md:items-end">
+            <img
+              src={selectedTrack.cover}
+              className="w-full max-w-64 rounded-md md:mr-3"
+            />
+            <span className="flex flex-col text-left">
+              <p>Single</p>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+                {selectedTrack.name}
+              </h1>
+              <h3 className="text-[#ababab]">
+                {selectedTrack.artist} - {selectedTrack.year}
+              </h3>
+            </span>
+          </div>
+          <div className="flex">
+            <ControlButton
+              className="bg-transparent border-none scale-150"
+              buttonImage={PlayPauseIcon(
+                isPlaying && selectedTrack === currentSong
+              )}
+              onClick={() => {
+                if (selectedTrack === currentSong) {
+                  togglePlayPause();
+                } else {
                   setCurrentSong(selectedTrack);
                   handleTrackSelection(selectedTrack.path);
-                }}
-              >
-                <span className="track__identifier track__font-grey track__span">
-                  1
+                }
+              }}
+            />
+          </div>
+          <div>
+            <div className="flex justify-between items-center pl-5 pr-5">
+              <span className="text-[#ababab]">#</span>
+              <span className="text-[#ababab]">Track</span>
+              <span className="text-[#ababab]">Dauer</span>
+            </div>
+            <hr className="border-[#ababab] mb-5" />
+            <div
+              className="flex justify-between items-center py-2 px-5 rounded-md lg:hover:bg-[#212121] group"
+              onClick={() => {
+                setCurrentSong(selectedTrack);
+                handleTrackSelection(selectedTrack.path);
+              }}
+            >
+              <span className=" block group-hover:hidden text-[#ababab] w-4">
+                1
+              </span>
+              <span className=" hidden group-hover:block text-[#ababab] w-4">
+                ▶
+              </span>
+              <span className="flex flex-col items-start">
+                <span className="text-lg">{selectedTrack.name}</span>
+                <span className="text-sm text-[#ababab]">
+                  {selectedTrack.artist}
                 </span>
-                <span className="track__play-icon track__font-grey track__span">
-                  ▶
-                </span>
-                <span className="track__list-title-item">
-                  <span className="track__list-title">
-                    {selectedTrack.name}
-                  </span>
-                  <span className="track__list-artist track__font-grey">
-                    {selectedTrack.artist}
-                  </span>
-                </span>
-                <span>{duration}</span>
-              </div>
+              </span>
+              <span>{duration}</span>
             </div>
           </div>
-          <Link to={"/"}>
-            <button className="track__back-home-button">← Back to Home</button>
-          </Link>
         </div>
+        <Link to={"/"}>
+          <GeneralButton buttonText="← Back to Home" />
+        </Link>
       </main>
       <PlaybackControls />
     </>
