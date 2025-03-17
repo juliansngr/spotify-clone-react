@@ -3,8 +3,6 @@ import ControlButton from "../ControlButton/ControlButton";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 
-import "./PlaybackControls.css";
-
 // Image Imports
 import PlayPauseIcon from "../PlayPauseIcon/PlayPauseIcon";
 import PrevIcon from "../PrevIcon/PrevIcon";
@@ -25,15 +23,15 @@ export default function PlaybackControls() {
 
   return (
     <>
-      <div className="playback-controls-container">
-        <div className="current-track-container">
+      <div className="flex justify-between items-center flex-col lg:flex-row bg-black py-5 fixed bottom-0 w-full z-50">
+        <div className="flex items-center pl-4">
           <CurrentTrackDisplay
             songName={currentSong.name}
             artistName={currentSong.artist}
             coverPath={currentSong.cover}
           />
         </div>
-        <div className="playback-middlesection-container">
+        <div className="flex flex-col-reverse lg:flex-col justify-center max-w-[900px]">
           <div className="control-button__container">
             <SignedOut>
               <ControlButton buttonImage={PrevIcon()} disabled={true} />
@@ -56,7 +54,7 @@ export default function PlaybackControls() {
           </div>
           <ProgressBar />
         </div>
-        <div className="volume-control-container">
+        <div className="hidden lg:block">
           <VolumeControl />
         </div>
       </div>

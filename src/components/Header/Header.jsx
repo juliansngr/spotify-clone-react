@@ -5,19 +5,17 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
-import "./Header.css";
-
 export default function Header() {
   return (
-    <header className="header">
-      <img src="../assets/logo.png" className="logo" />
+    <header className="flex justify-between items-center p-5 bg-black">
+      <img src="../assets/logo.png" className="w-50 md:w-60" />
 
       <SignedOut>
-        <SignInButton />
+        <SignInButton className="px-5 py-2 md:px-6 md:py-3 text-l md:text-xl transition-all duration-500 rounded-4xl text-[#1e1e1e] bg-white hover:scale-105" />
       </SignedOut>
       <SignedIn>
-        <div className="user-button-container">
-          <UserButton />
+        <div className="flex content-center">
+          <UserButton className="scale-110" />
         </div>
       </SignedIn>
     </header>
