@@ -5,8 +5,12 @@ export default function VolumeControl() {
   const { handleVolumeChange, volume, isMuted, handleMute } = useAudioPlayer();
 
   return (
-    <>
-      <button className="mute-button" onClick={handleMute} value={0}>
+    <div className="flex justify-center items-center pr-10">
+      <button
+        className="flex text-[#c9c9c9] hover:text-white bg-transparent border-none cursor-pointer"
+        onClick={handleMute}
+        value={0}
+      >
         {isMuted ? (
           <i class="material-symbols-outlined">volume_off</i>
         ) : (
@@ -15,7 +19,7 @@ export default function VolumeControl() {
       </button>
 
       <input
-        className="volume-control"
+        className="cursor-pointer lg:w-36 xl:w-48"
         type="range"
         step="0.001"
         min="0"
@@ -23,6 +27,6 @@ export default function VolumeControl() {
         value={isMuted ? 0 : volume}
         onChange={handleVolumeChange}
       />
-    </>
+    </div>
   );
 }

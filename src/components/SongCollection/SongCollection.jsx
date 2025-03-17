@@ -3,13 +3,14 @@ import { SingleSongRandom } from "../SingleSong/SingleSong";
 import "./SongCollection.css";
 import "../SingleSong/SingleSong.css";
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
-import FeelingLuckyButton from "../FeelingLuckyButton/FeelingLuckyButton";
+
 import { useState } from "react";
 import { trackIdDatabase } from "../../../utils/trackIdDatabase/trackIdDatabase";
 import Tooltip from "../Tooltip/Tooltip";
 import { Link } from "react-router-dom";
 import PlayPauseIcon from "../PlayPauseIcon/PlayPauseIcon";
 import ControlButton from "../ControlButton/ControlButton";
+import GeneralButton from "../GeneralButton/GeneralButton";
 
 export default function SongCollection() {
   const {
@@ -136,7 +137,8 @@ export default function SongCollection() {
       </div>
       <div className="feeling-lucky-button-section">
         <div className="feeling-lucky-button-container">
-          <FeelingLuckyButton
+          <GeneralButton
+            buttonText="Feelin' lucky today?"
             onClick={async () => {
               const access_token = await getSpotifyToken();
               const randomID = generateRandomSongID();
@@ -148,6 +150,7 @@ export default function SongCollection() {
               setRandomTrackState([randomTrack]);
             }}
           />
+
           <Tooltip
             className="tooltip--padding"
             text={

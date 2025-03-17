@@ -12,16 +12,16 @@ export default function ProgressBar() {
   }
 
   return (
-    <div className="progress-bar-container">
-      <p className="progress-bar__duration-text">{formatTime(progress)}</p>
+    <div className="flex gap-2 md:gap-4  w-[350px] sm:w-[600px] md:w-[700px] lg:w-[500px] xl:w-[700px]  2xl:w-[900px]">
+      <p>{formatTime(progress)}</p>
       <input
         type="range"
-        className="progress-bar"
+        className="w-full"
         max={songDuration}
         value={progress}
         onChange={handleProgressBar}
       />
-      <p className="progress-bar__duration-text">{formatTime(songDuration)}</p>
+      <p>{formatTime(songDuration)}</p>
     </div>
   );
 }

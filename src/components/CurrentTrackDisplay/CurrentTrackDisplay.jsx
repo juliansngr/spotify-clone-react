@@ -2,13 +2,14 @@ export default function CurrentTrackDisplay({
   songName,
   artistName,
   coverPath,
+  imgClassName,
 }) {
   return (
     <>
-      <img src={coverPath} className="current-track-display__cover" />
-      <div className="current-track-display__text">
-        <p className="current-track-display__text--title">{songName}</p>
-        <p className="current-track-display__text--subtext">{artistName}</p>
+      <img src={coverPath} className="w-20 m-4 shrink-0 rounded-sm" />
+      <div className="text-left text-white">
+        <p className="text-xl/5 font-thin">{songName}</p>
+        <p className="text-md mt-1 text-[#ababab]">{artistName}</p>
       </div>
     </>
   );
