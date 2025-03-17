@@ -1,5 +1,4 @@
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
-import "./VolumeControl.css";
 
 export default function VolumeControl() {
   const { handleVolumeChange, volume, isMuted, handleMute } = useAudioPlayer();

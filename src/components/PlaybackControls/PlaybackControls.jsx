@@ -3,8 +3,6 @@ import ControlButton from "../ControlButton/ControlButton";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 
-import "./PlaybackControls.css";
-
 // Image Imports
 import PlayPauseIcon from "../PlayPauseIcon/PlayPauseIcon";
 import PrevIcon from "../PrevIcon/PrevIcon";

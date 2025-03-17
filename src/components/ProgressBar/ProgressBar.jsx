@@ -1,5 +1,3 @@
-import "./ProgressBar.css";
-
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 
 export default function ProgressBar() {
