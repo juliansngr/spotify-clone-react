@@ -1,7 +1,6 @@
 import SingleSong from "../SingleSong/SingleSong";
 import { SingleSongRandom } from "../SingleSong/SingleSong";
-import "./SongCollection.css";
-import "../SingleSong/SingleSong.css";
+
 import { useAudioPlayer } from "../../../utils/AudioPlayerContext/AudioPlayerContext";
 
 import { useState } from "react";
@@ -102,12 +101,12 @@ export default function SongCollection() {
 
   return (
     <>
-      <div className="song-collection-container">
+      <div className="flex flex-wrap justify-center">
         {audioDB.map((audio) => {
           return (
-            <div class="single-song__card-wrapper">
+            <div class="relative group">
               <ControlButton
-                className="single-song__play-button"
+                className="opacity-0 scale-125 invisible absolute right-10 bottom-20 z-10 bg-transparent border-none transition-all duration-300 md:group-hover:bottom-24 md:group-hover:opacity-100 md:group-hover:visible"
                 buttonImage={PlayPauseIcon(isPlaying && audio === currentSong)}
                 onClick={() => {
                   if (audio === currentSong) {
@@ -118,24 +117,12 @@ export default function SongCollection() {
                   }
                 }}
               />
-              {/* <button
-                className="single-song__play-button"
-                onClick={() => {
-                  setCurrentSong(audio);
-                  handleTrackSelection(audio.path);
-                }}
-              >
-                <PlayPauseIcon />
-              </button> */}
+
               <Link to={`/track/${audio.id}`}>
                 <SingleSong
                   coverPath={audio.cover}
                   songName={audio.name}
                   artistName={audio.artist}
-                  // onClick={() => {
-                  //   setCurrentSong(audio);
-                  //   handleTrackSelection(audio.path);
-                  // }}
                   key={audio.id}
                 />
               </Link>
@@ -143,8 +130,8 @@ export default function SongCollection() {
           );
         })}
       </div>
-      <div className="feeling-lucky-button-section">
-        <div className="feeling-lucky-button-container">
+      <div className="flex justify-center items-center flex-col pt-24">
+        <div className="flex mb-6">
           <GeneralButton
             buttonText="Feelin' lucky today?"
             onClick={async () => {
@@ -177,11 +164,6 @@ export default function SongCollection() {
                 artistName={track.artists[0].name}
                 link={track.external_urls.spotify}
                 uri={track.uri}
-                // onClick={() => {
-                //   setCurrentSong(audio);
-                //   handleTrackSelection(audio.path);
-                // }}
-                // key={randomSongID}
               />
             );
           }

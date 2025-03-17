@@ -5,7 +5,9 @@ export default function ProgressBar({ disabled }) {
 
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
+
     const secs = Math.floor(seconds % 60);
+
     return `${minutes}:${secs.toString().padStart(2, "0")}`;
   }
 
@@ -17,6 +19,7 @@ export default function ProgressBar({ disabled }) {
       <input
         type="range"
         className={`w-full ${disabled ? "cursor-not-allowed" : "text-white"}`}
+        min={0}
         max={songDuration}
         value={progress}
         onChange={handleProgressBar}

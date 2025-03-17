@@ -31,7 +31,7 @@ function App() {
 
       <PlaybackControls />
 
-      <main className="main-content">
+      <main className="pt-[6vh] pb-[40vh] sm:pb-[30vh] lg:pb-[20vh]">
         <SignedOut>
           <EmptySongCollection />
         </SignedOut>
